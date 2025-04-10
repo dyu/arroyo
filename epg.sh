@@ -61,6 +61,7 @@ EOF
 
 init_arroyo_pg() {
 gen_arroyo_sql | /opt/target/pgsql/bin/psql -U postgres -f - && \
+refinery migrate -c refinery.toml -p crates/arroyo-api/migrations && \
 touch 'target/arroyo-setup-done'
 }
 
